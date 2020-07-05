@@ -32,7 +32,7 @@ exports.signin = (req,res) =>{
         // create authenticate method in user model
         if(!user.authenticate(password)){
             return res.status(401).json({
-                error: "User with email does not exist. Please signUp"
+                error: "Password did not match"
             })
         }
 
