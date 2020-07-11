@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: 'admin1@admin.com',
+        email: 'admin',
         password: 'password1',
         error: '',
         loading: false,
@@ -40,7 +40,7 @@ const Signin = () => {
         <form>
             <div className="form-group">
                 <label className="text-muted">Email</label>
-                <input onChange={handleChange('email')} value={email} type="email" className="form-control"/>
+                <input onChange={handleChange('email')} value={email} type="email" className="form-control" autoFocus/>
             </div>
             <div className="form-group">
                 <label className="text-muted">password</label>
