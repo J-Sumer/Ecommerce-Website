@@ -13,9 +13,12 @@ const isActive = (history, path) => {
 const Menu = ({ history }) => { // here history comes from  props, which comes from React-router-dom, since we have used withRouter in exports
     return (
         <div>
-            <ul className="nav nav-tabs bg-primary">
+            <ul className="nav nav-tabs ">
                 <li className="nav-item">
                     <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(history, '/shop')} to="/shop">Shop</Link>
                 </li>
 
                 {isAuthenticated() && isAuthenticated().user.role === 0 && (
