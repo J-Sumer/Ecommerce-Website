@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import { Link, withRouter} from 'react-router-dom' // using Link instead of <a> will avoid refreshing the whole page
 import { signout, isAuthenticated } from '../auth'
+import {itemTotal} from './cartHelpers'
 
 const isActive = (history, path) => {
     if(history.location.pathname === path ) {
@@ -51,7 +52,13 @@ const Menu = ({ history }) => { // here history comes from  props, which comes f
                             })}>Signout</span>
                         </li>
                     </div>
-                )}                
+                )} 
+                
+                <li className="nav-item" style={{right: "10px"}}>
+                    <Link className="nav-link" style={isActive(history, '/cart')} to="/cart">
+                        Cart({itemTotal()})
+                    </Link>
+                </li>               
             </ul>
 
         </div>

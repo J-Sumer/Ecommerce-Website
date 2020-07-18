@@ -43,3 +43,8 @@
         margin-top: 10px;
     }
 }
+
+.card-header.name {
+    background-color: #1417c4;
+    color: white;
+}
