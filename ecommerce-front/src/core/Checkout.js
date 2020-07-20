@@ -76,17 +76,18 @@ const Checkout = ({products, setRun = f=> f, run}) => {
             }
             processPayment(userId, token, paymentData)
             .then( response => {
-
+                console.log(response)
+                // create order
                 const createOrderData = {
                     products,
-                    transaction_id: response.transaction_id,
+                    transaction_id: response.transaction.id,
                     amount: response.transaction.amount,
                     address: data.address
                 }
                 
                 createOrder(userId, token, createOrderData)
                 
-                setData({...data, success: response.success})
+                setData({...data, success: true})
                 // empty the cart
                 emptyCart(() => {
                     // after emptying the cart we need to rerender the cart page so that the items will get removed
@@ -95,7 +96,7 @@ const Checkout = ({products, setRun = f=> f, run}) => {
                     console.log('payment successfully and cart emptied')
                     setData({...data, loading: false})
                 });
-                // create order
+                
             })
             .catch(error => setData({...data, loading: false}))
         }).catch(error => {

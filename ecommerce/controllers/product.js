@@ -86,12 +86,12 @@ exports.update = (req,res) => {
                 error: 'Image could not be uploaded'
             })
         }
-        const { name, description, price, category, quantity , shipping} = fields;
-        if(!name || !description || !price || !category || !quantity || !shipping){
-            return res.status(400).json({
-                error: "All fields should be present"
-            })
-        }
+        // const { name, description, price, category, quantity , shipping} = fields;
+        // if(!name || !description || !price || !category || !quantity || !shipping){
+        //     return res.status(400).json({
+        //         error: "All fields should be present"
+        //     })
+        // }
         let product = req.product;
 
         product = _.extend(product, fields)
@@ -124,6 +124,8 @@ exports.list = (req, res)=> {
     let order = req.query.order ? req.query.order : 'asc'
     let sortBy = req.query.sortBy ? req.query.sortBy : '_id'
     let limit = req.query.limit ? parseInt(req.query.limit) : 6
+    // if we donot want to limit the values we can send undefined from frontend
+    // parseInt(undefined) = NaN
 
     Product.find()
         .select("-photo")
@@ -252,7 +254,26 @@ exports.listSearch = (req,res) => {
     }
 }
 
-
+exports.decreaseQuantity = (req, res, next) => {
+    let bukOps = req.body.products.map((item) => {
+        return {
+            updateOne : {
+                filter: {_id: item._id},
+                update: {$inc: {quantity: -item.count, sold: +item.count}},
+                useFindAndModify: false
+            }
+        }
+    })
+    Product.bulkWrite(bukOps, {}, (error, products) => {
+        console.log("Came here 1")
+        if(error) {
+            return res.status(400).json({
+                error: 'Could not update product'
+            })
+        }
+        next();
+    })
+}
 
 
 
