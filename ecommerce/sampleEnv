@@ -1,0 +1,5 @@
+JWT_SECRET=asfdojhlkwfeoj
+BRAINTREE_PUBLIC_KEY=adfasdfasd
+BRAINTREE_PRIVATE_KEY=fgasdfgasd
+BRAINTREE_MERCHANT_ID=sdfghsdfgs
+DATABASE=mongodb://127.0.0.1:27017/ecommerce
