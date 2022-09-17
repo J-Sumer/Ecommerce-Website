@@ -25,6 +25,7 @@ Admin features includes CRUD operations on Items, Inventory and Order details.
     - ``` cd ecommerce ```
     - ``` npm install ``` To install all the dependencies
     - ``` npm run start ``` This will start the server on Port 8000
+5. Open ``` http://localhost:3000/ ```
 
 ## Stack Used
 1. React
