@@ -1,6 +1,6 @@
 # Ecommerce Application.
 
-[![My Skills](https://skills.thijs.gg/icons?i=html,css,js,react,mongodb)](https://skills.thijs.gg)
+[![My Skills](https://skills.thijs.gg/icons?i=html,css,js,react,mongodb,docker)](https://skills.thijs.gg)
 
 This application fully implements and Ecommerce website and an order management system to handle order processing. Stripe has been integrated to this application for payment processing.
 
